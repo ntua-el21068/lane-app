@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: lane-backend
+
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/lane}
+    username: ${DB_USERNAME:lane}
+    password: ${DB_PASSWORD:lane}
+
+  jpa:
+    hibernate:
+      ddl-auto: update # fine for early development; switch to migrations (Flyway) before Phase 2
+    show-sql: false
+
+server:
+  port: ${PORT:8080}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+  datasource:
+    url: jdbc:h2:mem:lane-test
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
