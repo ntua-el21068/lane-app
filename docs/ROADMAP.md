@@ -12,7 +12,7 @@ Full phase rationale lives in [`PROJECT_VISION.md`](PROJECT_VISION.md) §6. This
 
 ## Phase 1 — MVP: The Guide Room (text-only)
 - [x] `Message` entity + repository (backend)
-- [ ] `POST /api/guide/messages` endpoint (mock response first, no LLM call)
+- [x] `POST /api/guide/messages` endpoint (mock response first, no LLM call)
 - [ ] Wire real LLM provider call behind `GuideService`
 - [ ] Guide Room chat UI (message list + input) in Angular
 - [ ] Basic conversation persistence (per anonymous session, no auth yet)
