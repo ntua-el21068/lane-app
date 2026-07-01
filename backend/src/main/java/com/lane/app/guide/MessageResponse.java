@@ -1,27 +1,22 @@
-/*
- * Response Structure (MessageResponse.java) [MessageResponse]
- */
-
 package com.lane.app.guide;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-public class MessageResponse {
-    private String id;
-    private String sender; // "USER" or "ASSISTANT"
-    private String content;
-    private LocalDateTime timestamp;
-
-    public MessageResponse(String id, String sender, String content, LocalDateTime timestamp) {
-        this.id = id;
-        this.sender = sender;
-        this.content = content;
-        this.timestamp = timestamp;
+public record MessageResponse(
+        Long id,
+        String sessionId,
+        String sender,
+        String content,
+        Instant createdAt
+) {
+    // Προσθέσαμε το public εδώ για να μπορεί να το καλέσει ο GuideService
+    public static MessageResponse from(Message m) {
+        return new MessageResponse(
+                m.getId(),
+                m.getSessionId(),
+                m.getSender().name(),
+                m.getContent(),
+                m.getCreatedAt()
+        );
     }
-
-    // Getters
-    public String getId() { return id; }
-    public String getSender() { return sender; }
-    public String getContent() { return content; }
-    public LocalDateTime getTimestamp() { return timestamp; }
 }

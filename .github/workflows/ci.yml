@@ -25,6 +25,10 @@ jobs:
 
       - name: Build and test
         run: mvn -B clean verify
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+
+
 
   frontend:
     name: Frontend (Angular)
